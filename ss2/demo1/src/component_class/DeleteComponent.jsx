@@ -18,7 +18,9 @@ class DeleteComponent extends React.Component{
     }
     render() {
         return (
+
             <>
+                {console.log("--------delete run-------")}
                 <Modal show={this.props.isShow} onHide={this.handleClose}>
                     <Modal.Header closeButton>
                         <Modal.Title>Modal delete</Modal.Title>
@@ -39,4 +41,4 @@ class DeleteComponent extends React.Component{
         )
     }
 }
-export default DeleteComponent;
+export default React.memo(DeleteComponent);

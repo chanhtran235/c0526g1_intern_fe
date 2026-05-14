@@ -28,3 +28,6 @@ export function deleteById(id) {
         }
     }
 }
+export function addNew(student){
+    studentList.push(student);
+}
