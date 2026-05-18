@@ -1,13 +1,20 @@
 import {Link, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
-import {getById} from "../service/studentService.js";
+import { getById} from "../service/studentService.js";
 
 
 function DetailComponent() {
     const {id} = useParams();
     const [student, setStudent]= useState()
     useEffect(() => {
-        setStudent({...getById(id)})
+        const fetData = async ()=>{
+            let student = await getById(id);
+            console.log(student)
+            setStudent(student)
+        }
+        fetData();
+
+
     }, []);
     return (
         <>

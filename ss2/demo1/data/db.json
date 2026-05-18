@@ -1,0 +1,59 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "name": "Hai",
+      "gender": "true",
+      "subjects": [
+        "JS",
+        "JAVA",
+        "PHP"
+      ],
+      "class": {
+        "id": 1,
+        "name": "C0226G1"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Chanh Tran",
+      "gender": "true",
+      "subjects": [
+        "JS",
+        "JAVA",
+        "PHP"
+      ],
+      "class": {
+        "id": 1,
+        "name": "C0226G1"
+      }
+    },
+    {
+      "id": 4,
+      "name": "Chanh Tran",
+      "gender": "true",
+      "subjects": [
+        "JS",
+        "PHP"
+      ],
+      "class": {
+        "id": 3,
+        "name": "DST"
+      }
+    }
+  ],
+  "classes": [
+    {
+      "id": 1,
+      "name": "C0226G1"
+    },
+    {
+      "id": 2,
+      "name": "C0326G1"
+    },
+    {
+      "id": 3,
+      "name": "DST"
+    }
+  ]
+}

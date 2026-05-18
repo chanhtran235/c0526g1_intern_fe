@@ -5,6 +5,7 @@ import {Formik, Form, Field, ErrorMessage} from "formik";
 import {getAllClasses} from "../service/classService.js";
 
 import * as Yup from "yup";
+import {toast} from "react-toastify";
 
 const AddComponent = () => {
     const navigate = useNavigate();
@@ -17,20 +18,37 @@ const AddComponent = () => {
     });
     const [classList, setClassList] = useState([]);
     useEffect(() => {
-        setClassList([...getAllClasses()])
+        const fetData = async ()=>{
+            let list = await getAllClasses();
+            setClassList(list)
+        }
+        fetData();
+
     }, []);
     const handleSave = (value) => {
         const newStudent = {
             ...value,
             class: JSON.parse(value.class)
         }
-        addNew(newStudent);
-        console.log(getAll());
-        navigate("/student/list");
+        const fetData = async ()=>{
+            let status = await addNew(newStudent);
+            if (status){
+                console.log("-----------thành công-------")
+                toast.success("Add success!");
+            }else {
+                toast.error("Not success");
+            }
+            navigate("/student/list");
+        }
+        fetData();
+
+
+
+
     }
     const validation = Yup.object({
-        id: Yup.number().required("Không để trống")
-            .min(1,"Phải là là số dương"),
+        // id: Yup.number().required("Không để trống")
+        //     .min(1,"Phải là là số dương"),
         name:Yup.string().required("Không để trống")
             .matches(/^[A-Z][a-z]*(\s[A-Z][a-z]*)+$/,"tên phải đúng định dạng"),
     })
@@ -38,11 +56,11 @@ const AddComponent = () => {
         <>
             <Formik initialValues={student} onSubmit={handleSave} validationSchema={validation}>
                 <Form>
-                    <div>
-                        <label>ID:</label>
-                        <Field type = "text" name = "id"/>
-                        <ErrorMessage name={'id'} className={'text-danger'} component={'small'}/>
-                    </div>
+                    {/*<div>*/}
+                    {/*    <label>ID:</label>*/}
+                    {/*    <Field type = "text" name = "id"/>*/}
+                    {/*    <ErrorMessage name={'id'} className={'text-danger'} component={'small'}/>*/}
+                    {/*</div>*/}
                     <div>
                         <label>Name:</label>
                         <Field type = "text" name = "name"/>

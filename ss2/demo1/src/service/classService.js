@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const classList = [
     {
         id: 1,
@@ -13,8 +15,16 @@ const classList = [
     },
 
 ];
-
-export function getAllClasses() {
-    return [...classList]
+const API_URL = import.meta.env.VITE_API_URL;
+export async function getAllClasses() {
+    try{
+        const res =  await axios.get(`${API_URL}/classes`);
+        console.log(res);
+        return res.data
+    }catch (e){
+        console.log('lỗi call api');
+        console.log(e)
+    }
+    return []
 }
 

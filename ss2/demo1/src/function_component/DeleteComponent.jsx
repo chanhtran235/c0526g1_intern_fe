@@ -1,6 +1,8 @@
 import {Button, Modal} from "react-bootstrap";
 import React from "react";
 import {deleteById, getAll} from "../service/studentService.js";
+import {toast} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const DeleteComponent = ({isShow,setIsShowModal,setIsLoading,deleteStudent})=>{
 
@@ -8,9 +10,20 @@ const DeleteComponent = ({isShow,setIsShowModal,setIsLoading,deleteStudent})=>{
         setIsShowModal(false);
     }
     const handleDelete =()=>{
-        deleteById(deleteStudent.id);
-        setIsShowModal(false);
-        setIsLoading(pre=>!pre);
+        const fetData = async ()=>{
+            let status = await deleteById(deleteStudent.id);
+            if (status){
+                console.log("-----------thành công-------")
+                toast.success("Delete success!");
+                setIsLoading(pre=>!pre);
+            }else {
+                toast.error("Not success");
+            }
+            setIsShowModal(false);
+
+        }
+        fetData();
+
     }
 
     return (

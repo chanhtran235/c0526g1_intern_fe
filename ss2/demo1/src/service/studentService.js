@@ -1,61 +1,54 @@
+import axios from "axios";
 
-const studentList = [
-    {
-        id:1,
-        name:"chánh1",
-        gender: true,
-        subjects:["JS","JAVA"],
-        class:{
-            id: 1,
-            name: "C0226G1"
-        }
-    },
-    {
-        id:2,
-        name:"Hằng",
-        gender: false,
-        subjects:["JS","JAVA","SQL"],
-        class:{
-            id: 1,
-            name: "C0326G1"
-        }
-    },
-    {
-        id:3,
-        name:"Hải",
-        gender: true,
-        subjects:["JS","JAVA","SQL","PHP"],
-        class:{
-            id: 1,
-            name: "C0426G1"
-        }
-    }
-];
 
-export function getAll(){
-    return [...studentList]
-}
-
-export function deleteById(id) {
-
+const API_URL = import.meta.env.VITE_API_URL;
+export async function getAll(){
     // call API
-    for (let i = 0; i < studentList.length; i++) {
-        if (id == studentList[i].id) {
-            studentList.splice(i, 1);
-            break;
-        }
+    try {
+        const res = await axios.get(`${API_URL}/students`);
+        return  res.data
+    }catch (e){
+        console.log("---lỗi call API--")
+        console.log(e)
     }
+
+    return []
 }
 
-export function getById(id) {
-    // call API
-    for (let i = 0; i < studentList.length; i++) {
-        if (id == studentList[i].id) {
-           return studentList[i];
-        }
+export async function deleteById(id) {
+
+    try {
+        const res = await axios.delete(`${API_URL}/students/${id}`);
+        console.log(res.status);
+        return res.status =="200"
+    }catch (e){
+        console.log("---lỗi call API--")
+        console.log(e)
     }
-    return null;
+    return false;
 }
-export function addNew(student){
-    studentList.push(student);
+
+export async function getById(id) {
+    // call API
+    try {
+        const res = await axios.get(`${API_URL}/students/${id}`);
+        return  res.data
+    }catch (e){
+        console.log("---lỗi call API--")
+        console.log(e)
+    }
+
+    return null
+}
+export async function addNew(student){
+    // call API
+    try {
+        const res = await axios.post(`${API_URL}/students`,student);
+        return  res.status =="201"
+    }catch (e){
+        console.log("---lỗi call API--")
+        console.log(e)
+    }
+
+    return false
 }

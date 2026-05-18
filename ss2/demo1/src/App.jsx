@@ -9,12 +9,14 @@ import AddComponent from "./function_component/AddComponent.jsx";
 import DetailComponent from "./function_component/DetailComponent.jsx";
 import "bootstrap/dist/css/bootstrap.css"
 import "bootstrap/dist/js/bootstrap.js"
+import {ToastContainer} from "react-toastify";
 
 
 function App() {
 
     return (
         <>
+            <ToastContainer/>
             <HeaderComponent/>
             <Routes>
                 <Route path={'/'} element={<HomeComponent/>}/>

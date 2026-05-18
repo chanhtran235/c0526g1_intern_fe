@@ -1,7 +1,6 @@
 import DeleteComponent from "../function_component/DeleteComponent.jsx";
 import React, {useEffect, useState} from "react";
 import {getAll} from "../service/studentService.js";
-import AddComponent from "./AddComponent.jsx";
 import {Link} from "react-router-dom";
 
 const ListComponent = ()=>{
@@ -15,10 +14,13 @@ const ListComponent = ()=>{
 
     useEffect(()=>{
         console.log("----------useEffect------------")
-        console.log(getAll())
-        setStudentList([
-            ...getAll()
-        ])
+        const fetData = async ()=>{
+            let list = await getAll();
+            console.log(list)
+            setStudentList(list)
+        }
+        fetData();
+
     },[isLoading]);
 
     return(
