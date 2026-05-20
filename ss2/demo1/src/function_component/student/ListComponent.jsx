@@ -1,6 +1,6 @@
-import DeleteComponent from "../function_component/DeleteComponent.jsx";
+import DeleteComponent from "./DeleteComponent.jsx";
 import React, {useEffect, useState} from "react";
-import {getAll} from "../service/studentService.js";
+import {getAll} from "../../service/studentService.js";
 import {Link} from "react-router-dom";
 
 const ListComponent = ()=>{

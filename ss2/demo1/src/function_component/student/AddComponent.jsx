@@ -1,8 +1,8 @@
 import {useEffect, useRef, useState} from "react";
-import {addNew, getAll} from "../service/studentService.js";
+import {addNew, getAll} from "../../service/studentService.js";
 import {useNavigate} from "react-router-dom";
 import {Formik, Form, Field, ErrorMessage} from "formik";
-import {getAllClasses} from "../service/classService.js";
+import {getAllClasses} from "../../service/classService.js";
 
 import * as Yup from "yup";
 import {toast} from "react-toastify";

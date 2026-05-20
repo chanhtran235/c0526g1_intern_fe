@@ -1,6 +1,6 @@
 import {Button, Modal} from "react-bootstrap";
 import React from "react";
-import {deleteById, getAll} from "../service/studentService.js";
+import {deleteById, getAll} from "../../service/studentService.js";
 import {toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 

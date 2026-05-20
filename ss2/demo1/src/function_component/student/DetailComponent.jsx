@@ -1,6 +1,6 @@
 import {Link, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
-import { getById} from "../service/studentService.js";
+import { getById} from "../../service/studentService.js";
 
 
 function DetailComponent() {
